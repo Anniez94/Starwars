@@ -1,0 +1,67 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This project uses the Starwars Swapi api to get starwar movies and characters",
+    "version": "1.0.5",
+    "title": "Starwars"
+  },
+  "basePath": "api/",
+  "schemes": ["https", "http"],
+  "paths": {
+    "/movie/list": {
+      "get": {
+        "tags": ["movies"],
+        "summary": "get all movies",
+        "description": "",
+        "operationId": "getMovies",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/json", "application/xml"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/ApiResponse" }
+          }
+        }
+      }
+    },
+    "/movie/people/{type}": {
+      "get": {
+        "tags": ["characters"],
+        "summary": "sort all characters by name, height and gender",
+        "description": "",
+        "operationId": "getCharacters",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+            {
+              "name": "Characters",
+              "in": "path",
+              "description": "Sort Characters by name, gender and height to return",
+              "required": true,
+              "type": "string"
+            }
+          ]
+      }
+    },
+
+    "/movie/people/gender/{gender}": {
+        "get": {
+          "tags": ["characters"],
+          "summary": "Filter characters by gender",
+          "description": "",
+          "operationId": "getCharactersByGender",
+          "consumes": ["application/json", "application/xml"],
+          "produces": ["application/json", "application/xml"],
+          "parameters": [
+              {
+                "name": "Gender",
+                "in": "path",
+                "description": "Filter Characters by gender to return",
+                "required": true,
+                "type": "string"
+              }
+            ]
+        }
+      }
+  }
+}
