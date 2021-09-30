@@ -43,4 +43,4 @@ app.use('*', async(req, res, next) => next(Error.not_found('Route does not exist
 
 server.listen(PORT, () => logger.info(`Server running on Port: ${PORT}`));
 
-module.exports.handler = serverless(app)
+module.exports.handler = serverless(app);
