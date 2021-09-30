@@ -5,10 +5,10 @@
     "version": "1.0.5",
     "title": "Starwars"
   },
-  "basePath": "api/",
+  "basePath": "api/movie",
   "schemes": ["https", "http"],
   "paths": {
-    "/movie/list": {
+    "/list": {
       "get": {
         "tags": ["movies"],
         "summary": "get all movies",
@@ -24,9 +24,9 @@
         }
       }
     },
-    "/movie/people/{type}": {
+    "/people/{type}": {
       "get": {
-        "tags": ["characters"],
+        "tags": ["gender", "name", "height"],
         "summary": "sort all characters by name, height and gender",
         "description": "",
         "operationId": "getCharacters",
@@ -44,7 +44,7 @@
       }
     },
 
-    "/movie/people/gender/{gender}": {
+    "/people/gender/{gender}": {
         "get": {
           "tags": ["characters"],
           "summary": "Filter characters by gender",

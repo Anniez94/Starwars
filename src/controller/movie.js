@@ -122,8 +122,8 @@ class MovieController {
 
         const height = filterGender.map(gender => { return parseInt(gender.height)});
 
-        let total_height = height.reduce((previousValue, currentValue ) => previousValue + currentValue);
-        total_height = total_height / 30.48
+        const total_height_calculation = height.reduce((previousValue, currentValue ) => previousValue + currentValue);
+        const total_height = total_height_calculation / 30.48
 
         const split = () => {
             let newHeight = total_height.toFixed(2)
@@ -135,7 +135,7 @@ class MovieController {
             return join
         }
 
-        filterGender = {gender: filterGender, total_number_of_characters: filterGender.length, total_height: split()}
+        filterGender = {gender: filterGender, total_number_of_characters: filterGender.length, total_height_feet: split(),total_height_cm: total_height_calculation }
 
         return res
           .status(200)

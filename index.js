@@ -1,5 +1,7 @@
 const express = require("express");
 const http = require("http");
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 const Error = require("./src/middleware/api-error-class");
 const error_handler = require("./src/middleware/errorHandler");
 const PORT = 9050 || process.env.PORT;
@@ -11,11 +13,13 @@ const logger = require("./src/logger");
 // MIDDLEWARES
 app.use(express.json({limit: '50mb', extended: true}));
 app.use(express.urlencoded({extended: true}));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // MOUNT ROUTES
 app.use("/api/movie", movie);
 
 app.use(error_handler);
+
 
 // SERVER
 const server = http.createServer(app);
