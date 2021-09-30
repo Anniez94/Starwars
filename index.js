@@ -1,5 +1,6 @@
 const express = require("express");
 const http = require("http");
+const serverless = require("serverless-http")
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const Error = require("./src/middleware/api-error-class");
@@ -40,4 +41,6 @@ app.get('/', (req, res) => {
 //  Handle invalid route 
 app.use('*', async(req, res, next) => next(Error.not_found('Route does not exist', false)));
 
-server.listen(PORT, () => logger.info(`Server running on Port: ${PORT}`))
+server.listen(PORT, () => logger.info(`Server running on Port: ${PORT}`));
+
+module.exports.handler = serverless(app)
