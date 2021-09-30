@@ -6,7 +6,7 @@ const swaggerDocument = require('./swagger.json');
 const Error = require("./src/middleware/api-error-class");
 const error_handler = require("./src/middleware/errorHandler");
 const cors_middleware = require("./src/cors");
-const PORT = 9050 || process.env.PORT;
+const PORT = process.env.PORT || 9050;
 const app = express();
 
 const movie = require("./src/routes/movie");
