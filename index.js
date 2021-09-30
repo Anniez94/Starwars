@@ -7,9 +7,9 @@ const Error = require("./src/middleware/api-error-class");
 const error_handler = require("./src/middleware/errorHandler");
 const cors_middleware = require("./src/cors");
 const PORT = 9050 || process.env.PORT;
+const app = express();
 
 const movie = require("./src/routes/movie");
-const app = express();
 const logger = require("./src/logger");
 
 // MIDDLEWARES
@@ -20,12 +20,12 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 // MOUNT ROUTES
-app.use("/api/movie", movie);
+app.use("/.netlify/functions/api/movie", movie);
 
 app.use(error_handler);
 
 // SERVER
-const server = http.createServer(app);
+const server = serverless(app);
 
 // Home page route
 app.get('/', (req, res) => {
@@ -41,4 +41,6 @@ app.get('/', (req, res) => {
 //  Handle invalid route 
 app.use('*', async(req, res, next) => next(Error.not_found('Route does not exist', false)));
 
-server.listen(PORT, () => logger.info(`Server running on Port: ${PORT}`))
+server.listen(PORT, () => logger.info(`Server running on Port: ${PORT}`));
+
+module.exports.handler = server
