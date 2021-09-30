@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This project uses the Starwars Swapi api to get starwar movies and characters",
+    "description": "This project uses the Swapi api to get starwar movies and characters",
     "version": "1.0.5",
     "title": "Starwars"
   },
@@ -18,8 +18,7 @@
         "produces": ["application/json", "application/xml"],
         "responses": {
           "200": {
-            "description": "successful operation",
-            "schema": { "$ref": "#/definitions/ApiResponse" }
+            "description": "successful operation"
           }
         }
       }
@@ -27,14 +26,14 @@
     "/people/{type}": {
       "get": {
         "tags": ["gender", "name", "height"],
-        "summary": "sort all characters by name, height and gender",
+        "summary": "sort all characters",
         "description": "",
         "operationId": "getCharacters",
         "consumes": ["application/json", "application/xml"],
         "produces": ["application/json", "application/xml"],
         "parameters": [
             {
-              "name": "Characters",
+              "name": "Name, Gender, Height",
               "in": "path",
               "description": "Sort Characters by name, gender and height to return",
               "required": true,
