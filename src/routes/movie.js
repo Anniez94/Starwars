@@ -12,6 +12,4 @@ router.get("/list", get_movies);
 
 router.get("/comments", get_comments);
 
-// express.use("/.netlify/functions/", router);
-
 module.exports = router;

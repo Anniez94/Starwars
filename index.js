@@ -8,6 +8,7 @@ const error_handler = require("./src/middleware/errorHandler");
 const cors_middleware = require("./src/cors");
 const PORT = 9050 || process.env.PORT;
 const app = express();
+const router = express.Router();
 
 const movie = require("./src/routes/movie");
 const logger = require("./src/logger");
@@ -27,8 +28,7 @@ app.use(error_handler);
 // SERVER
 const server = http.createServer(app);
 
-// Home page route
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.status(200).json(
       {
           status: true,
@@ -37,6 +37,7 @@ app.get('/', (req, res) => {
     );
   });
 
+app.use("/.netlify/functions/", router);
 
 //  Handle invalid route 
 app.use('*', async(req, res, next) => next(Error.not_found('Route does not exist', false)));
