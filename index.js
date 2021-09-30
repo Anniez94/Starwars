@@ -20,15 +20,15 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 // MOUNT ROUTES
-app.use("/.netlify/functions/api/movie", movie);
+app.use("/api/movie", movie);
 
 app.use(error_handler);
 
 // SERVER
-const server = serverless(app);
+const server = http.createServer(app);
 
 // Home page route
-app.get('/.netlify/functions', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).json(
       {
           status: true,
@@ -41,6 +41,4 @@ app.get('/.netlify/functions', (req, res) => {
 //  Handle invalid route 
 app.use('*', async(req, res, next) => next(Error.not_found('Route does not exist', false)));
 
-server.listen(PORT, () => logger.info(`Server running on Port: ${PORT}`));
-
-module.exports.handler = server
+server.listen(PORT, () => logger.info(`Server running on Port: ${PORT}`))
