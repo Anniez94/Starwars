@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development nodemon start index.js",
-    "db_create": "sequelize-cli db:create"
+    "db_create": "sequelize-cli db:create",
+    "build": "npm run build"
   },
   "keywords": [],
   "author": "",
