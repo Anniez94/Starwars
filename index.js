@@ -28,7 +28,7 @@ app.use(error_handler);
 const server = serverless(app);
 
 // Home page route
-app.get('/', (req, res) => {
+app.get('/.netlify/functions', (req, res) => {
     res.status(200).json(
       {
           status: true,
