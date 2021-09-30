@@ -20,9 +20,21 @@ app.use("/api/movie", movie);
 
 app.use(error_handler);
 
-
 // SERVER
 const server = http.createServer(app);
+
+// Home page route
+app.get('/', (req, res) => {
+    res.status(200).json(
+      {
+          status: true,
+          msg: 'Welcome to Starwars'      
+      }
+    );
+  });
+
+
+
 
 //  Handle invalid route 
 app.use('*', async(req, res, next) => next(Error.not_found('Route does not exist', false)));
