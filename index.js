@@ -1,5 +1,4 @@
 const express = require("express");
-const serverless = require("serverless-http")
 const http = require("http");
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
