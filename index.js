@@ -1,6 +1,5 @@
 const express = require("express");
 const http = require("http");
-const serverless = require("serverless-http")
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const Error = require("./src/middleware/api-error-class");
