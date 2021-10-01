@@ -11,7 +11,7 @@ let dev_db = new Sequelize(config.development.database, config.development.usern
     }
 });
 
-let prod_db  = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`)
+let prod_db  = new Sequelize(`${process.env.DATABASE_URL}?ssl=true`)
 
 // new Sequelize(config.production.database, config.production.username, config.production.password, {
 //   dialect: config.production.dialect,
@@ -33,4 +33,4 @@ let prod_db  = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`)
 
 
 
-module.exports =  prod_db
+module.exports =  process.env.NODE_ENV === "development" ? dev_db : prod_db
