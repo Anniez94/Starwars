@@ -11,24 +11,24 @@ let dev_db = new Sequelize(config.development.database, config.development.usern
     }
 });
 
-let prod_db  =  new Sequelize(`postgres://${config.production.username}:${config.production.password}@${config.production.host}: ${config.production.port}/${config.production.database}?sslmode=require`)
+let prod_db  = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`)
 
-new Sequelize(config.production.database, config.production.username, config.production.password, {
-  dialect: config.production.dialect,
-  ssl: true, 
-  dialectOptions: {
-    ssl: {
-      require: true, // This will help you. But you will see nwe error
-      rejectUnauthorized: false // This line will fix new error
-    }
-  },
-  host:config.production.host,
-  port:config.production.port,
-  logging: false, 
-  define: {
-      freezeTableName: true
-    }
-});
+// new Sequelize(config.production.database, config.production.username, config.production.password, {
+//   dialect: config.production.dialect,
+//   ssl: true, 
+//   dialectOptions: {
+//     ssl: {
+//       require: true, // This will help you. But you will see nwe error
+//       rejectUnauthorized: false // This line will fix new error
+//     }
+//   },
+//   host:config.production.host,
+//   port:config.production.port,
+//   logging: false, 
+//   define: {
+//       freezeTableName: true
+//     }
+// });
 // new Sequelize(process.env.DATABASE_URL)
 
 
