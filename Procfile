@@ -1,1 +1,1 @@
-web: heroku run sequelize db:migrate && node index.js
+web: sequelize-cli db:migrate:all && node index.js
