@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "NODE_ENV=development nodemon start index.js",
     "db_create": "sequelize-cli db:create",
-    "start": "npx sequelize db:migrate && node index.js"
+    "start": " node index.js"
   },
   "keywords": [],
   "author": "",
