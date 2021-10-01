@@ -14,7 +14,10 @@ let dev_db = new Sequelize(config.development.database, config.development.usern
 let prod_db  = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     dialectOptions: {
-      ssl: true
+      ssl: {
+        require: true,
+        rejectUnauthorized: false 
+      }
     }
 })
 
