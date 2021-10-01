@@ -1,2 +1,1 @@
-web: sequelize-cli db:migrate
-web: node index.js
+web: npm start
