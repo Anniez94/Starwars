@@ -7,6 +7,7 @@ module.exports = {
     database: process.env.dbname,
     host: process.env.host,
     dialect: "postgres",
+    port: process.env.port
   },
   production: {
     username: process.env.user,
@@ -14,5 +15,6 @@ module.exports = {
     database: process.env.dbname,
     host: process.env.host,
     dialect: "postgres",
+    port: process.env.port
   },
 };
