@@ -9,12 +9,13 @@ module.exports = {
     dialect: "mysql"
   },
   production: {
-    username: process.env.user,
-    password: process.env.password,
-    database: process.env.dbname,
-    host: process.env.host,
     dialect: "postgres",
     port: process.env.port,
-    use_env_variable: "DATABASE_URL"
+    use_env_variable: "DATABASE_URL",
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
   },
 };
