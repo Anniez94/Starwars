@@ -30,28 +30,28 @@ class MovieController {
 
         sortedMoviesByDate.map((details) => {
           sortedMoviesEpisodeId.push(details.episode_id);
-          // sortedMoviesComments.push({
-          //   comments: [{ a: "hello", b: "hi" }],
-          //   episode_id: details.episode_id,
-          // });
+          // Test Data For Comment Table
+          sortedMoviesComments.push({
+            comments: [{ a: "hello", b: "hi" }],
+            episode_id: details.episode_id,
+          });
           return sortedMoviesEpisodeId;
         });
 
         // UPLOADING COMMENTS IN THE DATABASE
-        // if (sortedMoviesEpisodeId.length) {
-          
-        //   const get_comments = await Comment.findOne({
-        //     where: {
-        //       episode_id: {
-        //         [Op.or]: [sortedMoviesEpisodeId],
-        //       },
-        //     },
-        //   });
+        if (sortedMoviesEpisodeId.length) {
+          const get_comments = await Comment.findOne({
+            where: {
+              episode_id: {
+                [Op.or]: [sortedMoviesEpisodeId],
+              },
+            },
+          });
 
-        //   if (!get_comments) {
-        //     await Comment.bulkCreate(sortedMoviesComments);
-        //   }
-        // }
+          if (!get_comments) {
+            await Comment.bulkCreate(sortedMoviesComments);
+          }
+        }
 
         return res
           .status(200)
@@ -155,21 +155,21 @@ class MovieController {
    * @access  Public
    * ***/
 
-  // get_comments = async (req, res, next) => {
-  //   try {
-  //     const comments = await Comment.findAll({
-  //       order: [["id", "DESC"]],
-  //       attributes: ["comments", "createdAt"],
-  //     });
+  get_comments = async (req, res, next) => {
+    try {
+      const comments = await Comment.findAll({
+        order: [["id", "DESC"]],
+        attributes: ["comments", "createdAt"],
+      });
 
-  //     let get_ip = await publicIp.v4();
+      let get_ip = await publicIp.v4();
 
-  //     return res.status(200).json({ status: true, data: { comments, get_ip } });
-  //   } catch (error) {
-  //     logger.error(error);
-  //     next(Error.internal(`Internal server error, ${error}`, false));
-  //   }
-  // };
+      return res.status(200).json({ status: true, data: { comments, get_ip } });
+    } catch (error) {
+      logger.error(error);
+      next(Error.internal(`Internal server error, ${error}`, false));
+    }
+  };
 }
 
 module.exports = new MovieController();
