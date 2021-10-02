@@ -1,2 +1,1 @@
-worker: npx sequelize db:migrate
-web: npm start
+web: npm build
