@@ -16,7 +16,7 @@ let dev_db = new Sequelize(
   }
 );
 
-let prod_db = new Sequelize(process.env.DATABASE_URL, {
+let prod_db = new Sequelize(config.production.use_env_variable, {
   dialect: "postgres",
   dialectOptions: {
     ssl: {
