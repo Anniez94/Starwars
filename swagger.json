@@ -5,7 +5,7 @@
     "version": "1.0.5",
     "title": "Starwars"
   },
-  "basePath": "api/movie",
+  "basePath": "https://starwars-metacareapp.herokuapp.com/api/movie",
   "schemes": ["https", "http"],
   "paths": {
     "/list": {
