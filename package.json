@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "dev": "NODE_ENV=development nodemon start index.js",
-    "db_create": "sequelize-cli db:create"
+    "db_create": "sequelize-cli db:create",
+    "migrations": "sequelize-cli db:migrate"
+
   },
   "keywords": [],
   "author": "",
